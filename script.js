@@ -24,3 +24,8 @@ const animatedItems = document.querySelectorAll(".glass");
 animatedItems.forEach((item, index) => {
   item.style.transitionDelay = `${index * 0.15}s`;
 });
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".hero").forEach(hero => {
+    hero.style.backgroundPositionY = `${window.scrollY * 0.3}px`;
+  });
+});
