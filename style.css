@@ -204,3 +204,104 @@ h1, h2, h3 {
   from { background-position: 0% }
   to { background-position: 500% }
 }
+/* ============================= */
+/* FUTURISTIC LAB MODE ENABLED   */
+/* ============================= */
+
+/* Scanning Grid Background */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      rgba(88,166,255,0.06) 0px,
+      rgba(88,166,255,0.06) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(88,166,255,0.05) 0px,
+      rgba(88,166,255,0.05) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+  pointer-events: none;
+  z-index: -1;
+  animation: scanGrid 18s linear infinite;
+}
+
+@keyframes scanGrid {
+  from { opacity: 0.3; }
+  to { opacity: 0.6; }
+}
+
+/* HUD Style Section Borders */
+.glass {
+  position: relative;
+  border: 1px solid rgba(88,166,255,0.35);
+}
+
+.glass::before, .glass::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border: 2px solid rgba(88,166,255,0.6);
+}
+
+.glass::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.glass::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Pulsing Data Lines */
+.section p, ul li {
+  position: relative;
+}
+
+.section p::after, ul li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #58a6ff, transparent);
+  animation: dataPulse 3s infinite;
+}
+
+@keyframes dataPulse {
+  0% { width: 0%; opacity: 0; }
+  50% { width: 100%; opacity: 1; }
+  100% { width: 0%; opacity: 0; }
+}
+
+/* Scanner Line */
+body::marker { display: none; }
+.scanner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #58a6ff, transparent);
+  box-shadow: 0 0 20px #58a6ff;
+  animation: scanLine 4s linear infinite;
+  z-index: 9998;
+}
+
+@keyframes scanLine {
+  from { top: 0%; }
+  to { top: 100%; }
+}
